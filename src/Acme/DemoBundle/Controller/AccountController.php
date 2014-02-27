@@ -17,7 +17,6 @@ class AccountController extends Controller
         $form = $this->createForm(new RegistrationType(), $registration, array(
             'action' => $this->generateUrl('account_create'),
         ));
-//        $form->add('save', 'submit');
 
         return $this->render(
             'AcmeDemoBundle:Blog:register.html.twig',
