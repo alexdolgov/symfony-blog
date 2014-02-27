@@ -1,0 +1,70 @@
+{% extends '::base.html.twig' %}
+
+
+        {% form_theme form _self %}
+
+
+{% block form_widget_simple %}
+    {% set type = type|default('text') %}
+    <div class="control-group">
+
+        <div class="controls">
+            <input type="{{ type }}" {{ block('widget_attributes') }} value="{{ value }}" class="input-xlarge">
+
+        </div>
+    </div>
+{% endblock form_widget_simple %}
+        {% block submit_widget %}
+            {% spaceless %}
+                {% if label is empty %}
+                    {% set label = name|humanize %}
+                {% endif %}
+                <div class="control-group">
+                    <label class="control-label" for="singlebutton"></label>
+
+                    <div class="controls">
+
+                        <button type="{{ type|default('submit') }}" {{ block('button_attributes') }} >{{ label|trans({}, translation_domain) }}</button>
+
+                    </div>
+                </div>
+            {% endspaceless %}
+        {% endblock submit_widget %}
+
+{% block reset_widget %}
+    {% spaceless %}
+        {% set type = type|default('reset') %}
+        {{ block('button_widget') }}
+    {% endspaceless %}
+{% endblock reset_widget %}
+
+
+
+
+
+{% block body %}
+    <div class="posts-list">
+
+
+        {{ form_start(form) }}
+        <legend>{{ form_label(form) }}</legend>
+        {{ form_widget(form.user) }}
+        {{ form_label(form.terms) }}
+        {{ form_widget(form.terms) }}
+
+        {{ form_widget(form.save, {'attr': {'class': 'btn btn-success' }}) }}
+        <div class="reset-button">
+            {{ form_widget(form.reset, {'attr': {'class': 'btn btn-danger'} }) }}
+        </div>
+
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}
+
+
+
+
+
+

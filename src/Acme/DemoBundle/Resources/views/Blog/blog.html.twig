@@ -1,0 +1,25 @@
+{%  extends '::base.html.twig' %}
+{% block body %}
+<div class="posts-list">
+ {% for post in posts %}
+    <h2>
+     <a href="blog/{{ post.slug }}">
+
+        {{ post.title }}
+    </a>
+    </h2>
+    {% if post.author %}
+        <h6> Posted by
+       <a href="user/{{ post.author.name }}" >    {{ post.author.name }} </a>
+        </h6>
+     {% endif %}
+    <p> {{ post.content }}</p>
+
+     <hr>
+
+     {% endfor %}
+
+
+</div>
+
+{% endblock %}

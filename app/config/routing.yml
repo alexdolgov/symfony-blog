@@ -1,0 +1,38 @@
+
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+
+_welcome:
+    pattern:   /
+    defaults:  { _controller: AcmeDemoBundle:Main:homepage }
+
+blog_show:
+    pattern:   /blog/{slug}
+    defaults:  { _controller: AcmeDemoBundle:Blog:show }
+
+blog:
+    pattern:   /blog
+    defaults:  { _controller: AcmeDemoBundle:Bloglist:show }
+
+blog_user:
+    pattern:  /user/{name}
+    defaults: { _controller: AcmeDemoBundle:User:show }
+
+blog_about:
+    pattern:  /about
+    defaults:  { _controller: AcmeDemoBundle:Welcome:show }
+
+account_register:
+    path:     /register
+    defaults: { _controller: AcmeDemoBundle:Account:register }
+
+account_create:
+    path:     /register/create
+    defaults: { _controller: AcmeDemoBundle:Account:create }
